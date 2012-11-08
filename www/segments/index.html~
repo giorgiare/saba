@@ -1,0 +1,155 @@
+<!--
+You are free to copy and use this sample in accordance with the terms of the
+Apache license (http://www.apache.org/licenses/LICENSE-2.0.html)
+-->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title>
+      გაყიდვები საფასო სეგმენტების მიხედვით
+    </title>
+<link rel="stylesheet" href="css/styles.css" type="text/css"/>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>	
+<script src="http://code.highcharts.com/highcharts.js"></script>
+<script src="http://code.highcharts.com/modules/exporting.js"></script>
+<script>
+$(function () {
+    var chart;
+    $(document).ready(function() {
+        chart = new Highcharts.Chart({
+            chart: {
+                renderTo: 'container',
+                type: 'bar'
+            },
+            title: {
+                text: ''
+            },
+            xAxis: {
+                categories: ['გამომცემელი', 'იზდაწელი', 'პაბლიშერი', 'ლოკესეა', 'პენდინგი']
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'უკანასკნელი თვის გაყიდული რაოდენობებეი'
+                }
+            },
+            legend: {
+                backgroundColor: '#FFFFFF',
+                reversed: true
+            },
+            tooltip: {
+                formatter: function() {
+                    return ''+
+                        this.series.name +': '+ this.y +'';
+                }
+            },
+            plotOptions: {
+                series: {
+                    stacking: 'normal'
+                }
+            },
+                series: [{
+                name: 'მაღალი',
+                data: [parseInt(Math.random()*100)+1, parseInt(Math.random()*100)+1, parseInt(Math.random()*100)+1, parseInt(Math.random()*100)+1, parseInt(Math.random()*100)+1]
+            }, {
+                name: 'საშუალო',
+                data: [parseInt(Math.random()*100)+1, parseInt(Math.random()*100)+1, parseInt(Math.random()*100)+1, parseInt(Math.random()*100)+1, parseInt(Math.random()*100)+1]
+            }, {
+                name: 'დაბალი',
+                data: [parseInt(Math.random()*100)+1, parseInt(Math.random()*100)+1, parseInt(Math.random()*100)+1, parseInt(Math.random()*100)+1, parseInt(Math.random()*100)+1]
+            }]
+        });
+    });
+    
+});
+
+$(function () {
+    var chart;
+    $(document).ready(function() {
+        chart = new Highcharts.Chart({
+            chart: {
+                renderTo: 'container2',
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false
+            },
+            title: {
+                text: 'საფასო სეგმენტების გაყიდვის წილები'
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage}%</b>',
+                percentageDecimals: 1
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true,
+                        color: '#000000',
+                        connectorColor: '#000000',
+                        formatter: function() {
+                            return '<b>'+ this.point.name +'</b>: '+ this.percentage +' %';
+                        }
+                    }
+                }
+            },
+            series: [{
+                type: 'pie',
+                name: 'საფასო სეგმენტები',
+                data: [
+                    ['მაღალი',   45.0],
+                    ['საშუალო-მაღალი',       26.8],
+                    ['საშუალო',    8.5],
+                    ['საშუალო-დაბალი',     6.2],
+                    ['დაბალი',   0.7]
+                ]
+            }]
+        });
+    });
+    
+});
+</script>	
+<link rel="stylesheet" href="../css/styles.css" type="text/css"/>
+
+  </head>
+  <body style="font-family: Arial;border: 0 none;">
+	<body style="font-family: Arial;border: 0 none;">
+<div class="f_int">ბუშტის ჩარტები</div>
+<div class="s_int">
+<ul style="list-style-type:none;">
+<li><a href="segments">სეგმენტები</a></li>
+<li><a href="categories">სახეობები</a></li>
+<li><a href="publishers">გამომცემლობები</a></li>
+<li><a href="გამომცემლობა">გამომცემლობები ფასების მიხედვით</a></li>
+</ul>
+</div>
+<div class="f_int">გაყიდვები</div>
+<div class="s_int">
+<ul style="list-style-type:none;">
+<li><a href="ჯამური_თვეები">გაყიდვები/ჯამური გაყიდვები თვეების მიხედვით</a></li>
+<li><a href="ჯამური_კვირები">გაყიდვები/ჯამური გაყიდვები თვეების მიხედვით</a></li>
+<li><a href="ჰისტოგრამა">გაყიდვები/ჰისტოგრამები</a></li>
+
+
+</ul>
+</div>
+
+
+
+
+
+
+<div id="navcontainer">
+
+<ul id="navlist">
+<li id="navlist"><div id="container" style="min-width: 200px; height: 400px; width: 200px; margin: 0 auto"></div></li>
+<li id="navlist"><div id="container2" style="min-width: 400px; height: 400px; width: 200px;margin: 0 auto"></div></li>
+</ul>
+</div>
+
+  </body>
+</html>
+

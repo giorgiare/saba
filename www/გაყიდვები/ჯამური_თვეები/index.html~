@@ -1,0 +1,156 @@
+<!--
+You are free to copy and use this sample in accordance with the terms of the
+Apache license (http://www.apache.org/licenses/LICENSE-2.0.html)
+-->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title>
+      ჯამური გაყიდვები თვეების მიხედვით
+    </title>
+<link rel="stylesheet" href="../../css/styles.css" type="text/css"/>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>	
+<script src="http://code.highcharts.com/highcharts.js"></script>
+<script src="http://code.highcharts.com/modules/exporting.js"></script>
+<script>
+function load(value) {
+
+var inserted;
+var tag;  
+var hoover;
+var sm_tag;
+    if(value =="რაოდენობა"){
+	inserted =  new Array(48, 38, 39, 41, 47, 48, 59, 59, 52, 65, 59, 51);	
+	tag = "თვიური გაყიდვების რაოდენობა";
+	sm_tag = "რაოდენობა";
+	hoover = " ცალი"; 
+}else{
+	
+	inserted =  new Array(83, 78, 98, 93, 106, 84, 105, 104, 91, 83, 106, 92); 	
+	tag = "თვიური გაყიდვების ღირებულება";
+	sm_tag = "ღიდებულება (ლარებში)";	
+	hoover = " ლარი";
+}
+
+    
+var chart;
+    $(document).ready(function() {
+        chart = new Highcharts.Chart({
+            chart: {
+                renderTo: 'container',
+                type: 'column'
+            },
+            title: {
+                text: 'ჯამური წიგნების გაყიდვები'
+            },
+            subtitle: {
+                text: tag
+            },
+            xAxis: {
+                categories: [
+                    'იან',
+                    'თებ',
+                    'მარ',
+                    'აპრ',
+                    'მაი',
+                    'ივნ',
+                    'ივლ',
+                    'აგვ',
+                    'სექ',
+                    'ოქტ',
+                    'ნოე',
+                    'დეკ'
+                ]
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'გაყიდვები (ცალი)'
+                }
+            },
+            legend: {
+                layout: 'vertical',
+                backgroundColor: '#FFFFFF',
+                align: 'left',
+                verticalAlign: 'top',
+                x: 100,
+                y: 70,
+                floating: true,
+                shadow: true
+            },
+            tooltip: {
+                formatter: function() {
+                    return ''+
+                        this.x +': '+ this.y + hoover;
+                }
+            },
+            plotOptions: {
+                column: {
+                    pointPadding: 0.2,
+                    borderWidth: 0
+                }
+            },
+                series: [{
+                name: sm_tag,
+                data: [inserted[0],inserted[1],inserted[2],inserted[3],inserted[4],inserted[5],inserted[6],inserted[7],inserted[8],
+		inserted[9],inserted[10],inserted[11],		
+		],
+    		
+    
+            }]
+        });
+    });
+    
+}
+
+function change(){
+var val = document.getElementById("values").value;
+
+load(val);
+}
+load("რაოდენობა");
+
+</script>	
+<link rel="stylesheet" href="../css/styles.css" type="text/css"/>
+
+  </head>
+  <body style="font-family: Arial;border: 0 none;">
+	<body style="font-family: Arial;border: 0 none;">
+<div class="f_int">ბუშტის ჩარტები</div>
+<div class="s_int">
+<ul style="list-style-type:none;">
+<li><a href="../../segments">სეგმენტები</a></li>
+<li><a href="../../categories">სახეობები</a></li>
+<li><a href="../../publishers">გამომცემლობები</a></li>
+
+</ul>
+</div>
+<div class="f_int">გაყიდვები</div>
+<div class="s_int">
+<ul style="list-style-type:none;">
+<li><a href="გაყიდვები/ჯამური_თვეები">ჯამური გაყიდვები თვეების მიხედვით</a></li>
+<li><a href="გაყიდვები/ჯამური_კვირები">ჯამური გაყიდვები კვირების მიხედვით</a></li>
+<li><a href="გაყიდვები/ჰისტოგრამა">ჰისტოგრამები</a></li>
+
+</ul>
+</div>
+<div class="controls">
+<select id="values" name="values" class="values" onchange="change()" value="რაოდენობა">
+<option>რაოდენობა</option>
+<option>ღირებულება</option>
+</select>
+
+</div>
+<div class="gra"  id="container" style="min-width: 450px; height: 400px; width: 700px; "></div>
+<div class="descr">
+<p >ამ გრაფიკზე არის გამოსახული გამომცემელთა საშუალო ფასები წიგნების ჟანრების მიხედვით</p>
+<p >მცირე გრაფიკი გამოსახავს გამომცემლების ჯამურ გაყიდვებს </p>
+</div>
+
+
+
+  </body>
+</html>
+

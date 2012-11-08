@@ -1,0 +1,102 @@
+<!--
+You are free to copy and use this sample in accordance with the terms of the
+Apache license (http://www.apache.org/licenses/LICENSE-2.0.html)
+-->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <title>საბა ანალიტიკა - ნავიგატორების წილები</title>
+  
+<link rel="stylesheet" href="../../css/styles.css" type="text/css"/>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>	
+<script src="http://code.highcharts.com/highcharts.js"></script>
+<script src="http://code.highcharts.com/modules/exporting.js"></script>
+  <script>
+$(function () {
+    var arra = new Array(48.23,26.8,12.8, 8.5, 6.2, 0.7); 	
+
+    var chart;
+    $(document).ready(function() {
+        
+        // Radialize the colors
+        Highcharts.getOptions().colors = $.map(Highcharts.getOptions().colors, function(color) {
+            return {
+                radialGradient: { cx: 0.5, cy: 0.3, r: 0.7 },
+                stops: [
+                    [0, color],
+                    [1, Highcharts.Color(color).brighten(-0.3).get('rgb')] // darken
+                ]
+            };
+        });
+        
+        // Build the chart
+        chart = new Highcharts.Chart({
+            chart: {
+                renderTo: 'container',
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false
+            },
+            title: {
+                text: 'გაყიდვების წილები ინტერნეტ ნავიგატორების მიხედვით'
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage}%</b>',
+                percentageDecimals: 2
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true,
+                        color: '#000000',
+                        connectorColor: '#000000',
+                        formatter: function() {
+				 
+                            return '<b>'+ this.point.name +'</b>: '+ this.percentage.toFixed(2) +' %';
+                        }
+                    }
+                }
+            },
+            series: [{
+                type: 'pie',
+                name: 'გაყიდვების წილი',
+                data: [
+                    ['ფაირფოქსი',   arra[0]],
+                    ['ინტერნეტ ექსპლორერი',     arra[1]],
+                    ['ქრომი',       arra[2]],
+                    ['საფარი',    arra[3]],
+                    ['ოპერა',     arra[4]],
+                    ['სხვები',   arra[5]]
+                ]
+            }]
+        });
+    });
+    
+});</script>
+</head>
+<body style="font-family: Arial;border: 0 none;">
+<div class="f_int">ბუშტის ჩარტები</div>
+<div class="s_int">
+<ul style="list-style-type:none;">
+<li><a href="../../სეგმენტები">სეგმენტები</a></li>
+<li><a href="../../სახეობები">სახეობები</a></li>
+<li><a href="../../გამომცემლები">გამომცემლობები</a></li>
+<li><a href="../../გამომცემლობა">გამომცემლობები ფასების მიხედვით</a></li>
+</ul>
+</div>
+<div class="f_int">გაყიდვები</div>
+<div class="s_int">
+<ul style="list-style-type:none;">
+<li><a href="../ჯამური_თვეები">ჯამური გაყიდვები თვეების მიხედვით</a></li>
+<li><a href="../ჰისტოგრამა">ჰისტოგრამები</a></li>
+<li><a href="../კვირის_დღეები">კვირის დღეების მიხედვით</a></li>
+</ul>
+</div>
+</div>
+<div class="gra" id="container" style="min-width: 400px; height: 400px; width: 700px; "></div>
+</body>
+</html>
