@@ -1,0 +1,230 @@
+<!--
+You are free to copy and use this sample in accordance with the terms of the
+Apache license (http://www.apache.org/licenses/LICENSE-2.0.html)
+-->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title>
+      ჯამური გაყიდვები თვეების მიხედვით
+    </title>
+<link rel="stylesheet" href="../../css/styles.css" type="text/css"/>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>	
+<script src="http://code.highcharts.com/highcharts.js"></script>
+<script src="http://code.highcharts.com/modules/exporting.js"></script>
+<script>
+function load(value) {
+
+var vert_text;
+var high = 120;
+var low = 100;
+var inserted;
+var inserted1;
+var inserted2;
+var tag;  
+var hoover;
+var sm_tag;
+
+
+switch(value){
+		
+	case "წიგნების თვლა":
+alert(value);
+	inserted =  new Array(60,54,20,11,33,7,2,31,6,6,3,1,14,18,1,18,1,0,0,4);
+	break;
+	case "გაყიდვები":
+	inserted =  new Array(69,28,15, 6,13,9,2,11,6,4,1,3, 2, 1, 1, 1,0,0,0,3);
+	break;
+	case "გაყიდვების ღირ.":
+	inserted = new Array(383.95,132.4,82.15,44,33.7,27.29,20,16.96,16,8,7,6,5.98,5,3,2,0,0,0,0);
+	break;
+	case "წიგნები საიტზე":
+	inserted = new Array(123,79,35,17,52,19,3,1125,11,703,5,6,34,22,2,30,1,0,0,384);
+	break;
+	case "ნახვები":
+	inserted = new Array(19802,13901,8375,2519,6581,1547,688,2272,2748,4809,575,1114,2392,195,314,1095,162,0,0,1949);
+	break;
+
+	
+}
+
+
+    if(value =="წიგნების თვლა"){
+	
+	inserted1 =  new Array(57, 23, 54, 72, 45, 40, 29, 37, 48, 20, 50, 70);	
+	inserted2 =  new Array(28, 50, 38, 33, 36, 38, 42, 48, 55, 67, 80, 34);	
+	tag = "თვიური გაყიდვების რაოდენობა";
+	sm_tag = "რაოდენობა";
+	hoover = " ცალი";
+	vert_text = "გაყიდვები (ცალი)"; 
+}else{
+	
+	//inserted =  new Array(83,  78, 98,  93, 106,  84, 105, 104, 91,  83, 106, 92);
+	inserted1 =  new Array(100, 120, 85,  93,  83,  89,  95,  93, 97, 110, 120, 140);	
+	inserted2 =  new Array (93,  79, 89, 120, 125, 112, 106,  85, 96,  85,  95, 100);	 	
+	tag = "თვიური გაყიდვების ღირებულება";
+	sm_tag = "ღიდებულება (ლარებში)";
+	vert_text = "გაყიდვები (ლარი)";	
+	hoover = " ლარი";
+}
+
+    
+ var chart;
+    $(document).ready(function() {
+
+        chart = new Highcharts.Chart({
+            chart: {	
+                renderTo: 'container',
+                type: 'column',
+                margin: [ 50, 50, 100, 80]
+            },
+            title: {	
+                text: 'World\'s largest cities per 2008'
+            },
+            xAxis: {
+                categories: [
+                    
+	'ბაკურ სულაკაურის გამომცემლობა', 
+	"დიოგენე", 
+	"სიესტა", 
+	'კავკასიური სახლი', 
+	"ინტელექტი", 
+	"აგორა", 
+	"ახალი საქართველო", 
+	"საბას", 
+	"საუნჯე", 
+	"არეტე", 
+	"შემეცნება", 
+	"უნივერსალი", 
+	"ლოგოს პრესი", 
+	"ქართული ბიოგრაფიული ცენტრი", 
+	"სვეტი", 
+	"არტანუჯი", 
+	"ბაკმი", 
+	"ელენეს წიგნები", 
+	"სანდროს წიგნები", 
+	"ნეკერი" 
+
+                ],
+                labels: {
+                    rotation: -45,
+                    align: 'right',
+                    style: {
+                        fontSize: '13px',
+                        fontFamily: 'Verdana, sans-serif'
+                    }
+                }
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'Population (millions)'
+                }
+            },
+            legend: {
+                enabled: false
+            },
+            tooltip: {
+                formatter: function() {
+                    return '<b>'+ this.x +'</b><br/>'+
+                        'Population in 2008: '+ Highcharts.numberFormat(this.y, 1) +
+                        ' millions';
+                }
+            },
+            series: [{
+                name: 'Population',
+                data:   [inserted[0],
+			 inserted[1], 
+			inserted[2],
+			inserted[3],
+			inserted[4],	
+			inserted[5],
+			inserted[6],
+			inserted[7],
+			inserted[8],
+			inserted[9],
+			inserted[10],
+			inserted[11],
+			inserted[12],
+			inserted[13],
+			inserted[14],
+			inserted[15],
+			inserted[16],
+			inserted[17],
+			inserted[18],
+			inserted[19]
+
+				
+			],
+                dataLabels: {
+                    enabled: true,
+                    rotation: -90,
+                    color: '#FFFFFF',
+                    align: 'right',
+                    x: 4,
+                    y: 10,
+                    style: {
+                        fontSize: '13px',
+                        fontFamily: 'Verdana, sans-serif'
+                    }
+                }
+            }]
+        });
+    });
+    
+}
+
+function change(){
+var val = document.getElementById("values").value;
+
+load(val);
+}
+load("წიგნების თვლა");
+
+</script>	
+<link rel="stylesheet" href="../css/styles.css" type="text/css"/>
+
+  </head>
+  <body style="font-family: Arial;border: 0 none;">
+	<body style="font-family: Arial;border: 0 none;">
+<div class="f_int">ბუშტის ჩარტები</div>
+<div class="s_int">
+<ul style="list-style-type:none;">
+<li><a href="../../segments">სეგმენტები</a></li>
+<li><a href="../../categories">სახეობები</a></li>
+<li><a href="../../publishers">გამომცემლობები</a></li>
+
+</ul>
+</div>
+<div class="f_int">გაყიდვები</div>
+<div class="s_int">
+<ul style="list-style-type:none;">
+<li><a href="გაყიდვები/ჰისტოგრამა">ჰისტოგრამები</a></li>
+<li><a href="../ნავიგატორები">ნავიგატორები</a></li>
+<li><a href="../კვირის_დღეები">კვირის დღეების მიხედვით</a></li>
+
+</ul>
+</div>
+<div class="controls">
+<select id="values" name="values" class="values" onchange="change()" value="წიგნების თვლა">
+<option>წიგნების თვლა</option>
+<option>გაყიდვები</option>
+<option>გაყიდვების ღირ.</option>
+<option>წიგნები საიტზე</option>
+<option>ნახვები</option>
+</select>
+
+</div>
+<div class="gra"  id="container" style="min-width: 450px; height: 400px; width: 700px; "></div>
+<div class="descr">
+<p >ამ გრაფიკზე არის გამოსახული გამომცემელთა საშუალო ფასები წიგნების ჟანრების მიხედვით</p>
+<p >მცირე გრაფიკი გამოსახავს გამომცემლების ჯამურ გაყიდვებს </p>
+</div>
+
+
+
+  </body>
+</html>
+

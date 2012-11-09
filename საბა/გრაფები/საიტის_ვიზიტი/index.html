@@ -1,0 +1,96 @@
+<!--
+You are free to copy and use this sample in accordance with the terms of the
+Apache license (http://www.apache.org/licenses/LICENSE-2.0.html)
+-->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <title>საბა ანალიტიკა - კვირის დღეები</title>
+  
+<link rel="stylesheet" href="../../სტილები/სტილები.css" type="text/css"/>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>	
+<script src="http://code.highcharts.com/highcharts.js"></script>
+<script src="http://code.highcharts.com/modules/exporting.js"></script>
+  <script>
+$(function () {
+    var chart;
+    $(document).ready(function() {
+        chart = new Highcharts.Chart({
+            chart: {
+                renderTo: 'container',
+                type: 'line'
+            },
+            title: {
+                text: 'საიტის ვიზიტების სიხშირე'
+            },
+            subtitle: {
+                text: 'საიტის მთავარი გვერდის საშუალო გამოძახება (დღიური)'
+            },
+            xAxis: {
+                categories: ['იან', 'თებ', 'მარ', 'აპრ', 'მაი', 'ივნ', 'ივლ', 'აგვ', 'სექ', 'ოქტ', 'ნოე', 'დეკ']
+            },
+            yAxis: {
+                title: {
+                    text: 'საშუალო დღიური ვიზიტი'
+                }
+            },
+            tooltip: {
+                enabled: false,
+                formatter: function() {
+                    return '<b>'+ this.series.name +'</b><br/>'+
+                        this.x +': '+ this.y +'°C';
+                }
+            },
+            plotOptions: {
+                line: {
+                    dataLabels: {
+                        enabled: true
+                    },
+                    enableMouseTracking: false
+                }
+            },
+            series: [{
+                name: 'საქართველოში',
+                data: [170, 169, 195, 145, 184, 215, 252, 265, 233, 183, 178, 196]
+            }, {
+                name: 'საზღვარგარეთ',
+                data: [39, 42, 57, 85, 119, 152, 170, 166, 142, 103, 66, 48]
+            }]
+        });
+    });
+    
+});
+</script>
+</head>
+<body style="font-family: Arial;border: 0 none;">
+	
+<div class="f_int">გრაფები</div>
+	<div class="s_int">
+		<ul style="list-style-type:none;">
+			<li>
+				<a href="../ჯამური_თვეები">გაყიდვები ჯამური</a>
+			</li>
+			<li>
+				<a href="../სეგმენტები">სეგმენტები</a>
+			</li>
+			<li>
+				<a href="../გამომცემლობები">გამომცემლობები</a>
+			</li>
+			<li>
+				<a href="../ნავიგატორები">ნავიგატორები</a>
+			</li>
+			<li>
+				<a href="../კვირის_დღეები">კვირის დღეები</a>
+			</li>
+			<li>
+				<a href="../შედარებები">შედარებები</a>
+			</li>
+			
+		</ul>
+	</div>
+
+<div class="gra" id="container" style="min-width: 400px; height: 400px; width: 700px; "></div>
+</body>
+</html>

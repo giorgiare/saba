@@ -1,0 +1,52 @@
+body{
+background-color: white;
+}
+
+
+
+.f_int{
+color:red;
+margin-left: 30px;
+
+}
+
+.s_int{
+
+margin-left: 20px;
+}
+
+.output{
+margin-top: 50px;
+margin-left: 350px;
+}
+
+
+#navlist li 
+{
+color:white;
+display: inline;
+list-style-type: none;
+padding-right: 20px;
+}
+
+.descr{
+float:right;
+color:white;
+}
+
+.gra{
+margin-right: 100px;
+float:right;
+}
+
+.values{
+float:right;
+clear:both;
+height: 700px;
+
+}
+.controls{
+	
+	
+	
+}
